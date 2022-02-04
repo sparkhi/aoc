@@ -1,7 +1,8 @@
-package com.knowingwhere.aoc
+package com.knowingwhere.aoc.Day3
 
-import org.scalatest._
+import com.knowingwhere.aoc
 import org.scalatest.Matchers._
+import org.scalatest._
 
 class Day3Test extends WordSpec with BeforeAndAfterEach {
   "Day3" should {
@@ -21,11 +22,11 @@ class Day3Test extends WordSpec with BeforeAndAfterEach {
     )
 
     "get individual common digits " in {
-      Day3.getCommonDigit(lines, 0, "0") shouldBe "1"
-      Day3.getCommonDigit(lines, 1, "0") shouldBe "0"
-      Day3.getCommonDigit(lines, 2, "0") shouldBe "1"
-      Day3.getCommonDigit(lines, 3, "0") shouldBe "1"
-      Day3.getCommonDigit(lines, 4, "0") shouldBe "0"
+      aoc.Day3.Day3.getCommonDigit(lines, 0, "0") shouldBe "1"
+      aoc.Day3.Day3.getCommonDigit(lines, 1, "0") shouldBe "0"
+      aoc.Day3.Day3.getCommonDigit(lines, 2, "0") shouldBe "1"
+      aoc.Day3.Day3.getCommonDigit(lines, 3, "0") shouldBe "1"
+      aoc.Day3.Day3.getCommonDigit(lines, 4, "0") shouldBe "0"
     }
 
     "get common digit " in {
@@ -38,7 +39,7 @@ class Day3Test extends WordSpec with BeforeAndAfterEach {
         "10000",
         "11001"
       )
-      Day3.getCommonDigit(newLines, 1, "1") shouldBe "0"
+      aoc.Day3.Day3.getCommonDigit(newLines, 1, "1") shouldBe "0"
     }
 
     "get individual when preferred is used " in {
@@ -48,24 +49,24 @@ class Day3Test extends WordSpec with BeforeAndAfterEach {
         "010",
         "011"
       )
-      Day3.getCommonDigit(newLines, 2, "0") shouldBe "0"
-      Day3.getCommonDigit(newLines, 2, "1") shouldBe "1"
+      aoc.Day3.Day3.getCommonDigit(newLines, 2, "0") shouldBe "0"
+      aoc.Day3.Day3.getCommonDigit(newLines, 2, "1") shouldBe "1"
     }
 
     "get gamma rate " in {
-      Day3.getGammaRate(lines) shouldBe 22
+      aoc.Day3.Day3.getGammaRate(lines) shouldBe 22
     }
 
     "get epsilon rate " in {
-      Day3.getEpsilonRate(lines) shouldBe 9
+      aoc.Day3.Day3.getEpsilonRate(lines) shouldBe 9
     }
 
     "get oxygen rate " in {
-      Day3.getOxygenRating(lines, 0) shouldBe 23
+      aoc.Day3.Day3.getOxygenRating(lines, 0) shouldBe 23
     }
 
     "get co2 rate " in {
-      Day3.getCo2Rating(lines, 0) shouldBe 10
+      aoc.Day3.Day3.getCo2Rating(lines, 0) shouldBe 10
     }
   }
 }

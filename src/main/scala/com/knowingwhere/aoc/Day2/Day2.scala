@@ -1,4 +1,4 @@
-package com.knowingwhere.aoc
+package com.knowingwhere.aoc.Day2
 
 import scala.io.Source
 

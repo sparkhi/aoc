@@ -1,10 +1,10 @@
-package com.knowingwhere.aoc
+package com.knowingwhere.aoc.Day3
 
 import scala.io.Source
 
 object Day3 {
   def getEpsilonRate(lines: List[String]): Int = {
-    val epsilonStringFull = generateGammaRateString(lines,"").replace('0', 'X').replace('1', '0').replace('X', '1')
+    val epsilonStringFull = generateGammaRateString(lines, "").replace('0', 'X').replace('1', '0').replace('X', '1')
     Integer.parseInt(epsilonStringFull, 2)
   }
 
@@ -53,6 +53,7 @@ object Day3 {
       Integer.parseInt(remaining.head, 2)
     }
   }
+
   def main(args: Array[String]): Unit = {
     val resource = Source.fromResource("day3-input.txt")
     val lines = resource.getLines.toList
