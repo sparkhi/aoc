@@ -17,9 +17,13 @@ class Day5Test extends WordSpec with BeforeAndAfterEach {
             "3,4 -> 1,4",
             "0,0 -> 8,8",
             "5,5 -> 8,2")
-      val result = Day5.doStuff(stringLines.map(new Line(_)))
-      result(0).mkString shouldBe "0000000100"
-      result(4).mkString shouldBe "0112313211"
+      val result: Array[Array[Int]] = Day5.doStuff(stringLines.map(new Line(_)).filter(_.isVerticalOrHorizontal))
+      result(0).mkString shouldBe "0000000002"
+      result(4).mkString shouldBe "0000100001"
+
+      val result1: Array[Array[Int]] = Day5.doStuff(stringLines.map(new Line(_)))
+      result1.map(eachrow => eachrow(4)).mkString shouldBe "0112313211"
+
     }
   }
 }
