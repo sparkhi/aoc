@@ -46,24 +46,24 @@ class NavigationLine (line: String){
     }
   }
 
-  def generateClosingSequence: String = {
-    val closingChars: mutable.StringBuilder = new StringBuilder()
-    while (charStack.nonEmpty) {
-      val s = charStack.pop()
-      s match {
-        case "(" => closingChars.append(")")
-        case "[" => closingChars.append("]")
-        case "{" => closingChars.append("}")
-        case "<" => closingChars.append(">")
+  def getClosingSequence: String = {
+      val closingChars: mutable.StringBuilder = new StringBuilder()
+      while (charStack.nonEmpty) {
+        val s = charStack.pop()
+        s match {
+          case "(" => closingChars.append(")")
+          case "[" => closingChars.append("]")
+          case "{" => closingChars.append("}")
+          case "<" => closingChars.append(">")
+        }
       }
-    }
-    closingChars.mkString
+      closingChars.mkString
   }
 
   if (!_isCorrupt) {
     if (charStack.nonEmpty) {
       _isIncomplete = true
-      _closingSequence = generateClosingSequence
+      _closingSequence = getClosingSequence
     }
   }
 
@@ -73,6 +73,20 @@ class NavigationLine (line: String){
 
   def isCorrupt: Boolean = {
     _isCorrupt
+  }
+
+  def getCompletionScore: BigInt = {
+    var score:BigInt = 0
+    for (char <- _closingSequence) {
+      score *= 5
+      char match {
+        case ')' => score += 1
+        case ']' => score += 2
+        case '}' => score += 3
+        case '>' => score += 4
+      }
+    }
+    score
   }
 
   def getSyntaxErrorScore: Int = {

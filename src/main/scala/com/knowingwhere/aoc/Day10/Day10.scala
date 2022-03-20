@@ -8,7 +8,8 @@ object Day10 {
     println(lines.map(new NavigationLine(_)).filter(!_.isIncomplete).filter(_.isCorrupt).map(_.getSyntaxErrorScore).sum)
 
     val incompleteLines = lines.map(new NavigationLine(_)).filter(_.isIncomplete)
-
+    val sortedScore = incompleteLines.map(_.getCompletionScore).sorted
+    println(sortedScore(sortedScore.size / 2))
   }
 
 }
