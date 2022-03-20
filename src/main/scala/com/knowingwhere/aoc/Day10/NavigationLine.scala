@@ -8,6 +8,7 @@ class NavigationLine (line: String){
   private var _isCorrupt = false
   private var _isIncomplete = false
   private var _offendingChar = ""
+  private var _closingSequence = ""
   for (oneChar <- charList) {
     if (!_isCorrupt) {
       oneChar match {
@@ -44,9 +45,25 @@ class NavigationLine (line: String){
       }
     }
   }
+
+  def generateClosingSequence: String = {
+    val closingChars: mutable.StringBuilder = new StringBuilder()
+    while (charStack.nonEmpty) {
+      val s = charStack.pop()
+      s match {
+        case "(" => closingChars.append(")")
+        case "[" => closingChars.append("]")
+        case "{" => closingChars.append("}")
+        case "<" => closingChars.append(">")
+      }
+    }
+    closingChars.mkString
+  }
+
   if (!_isCorrupt) {
     if (charStack.nonEmpty) {
       _isIncomplete = true
+      _closingSequence = generateClosingSequence
     }
   }
 
