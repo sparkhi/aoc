@@ -135,6 +135,4 @@ object Day9 {
     val sizes = result.map(point => getBasinSize(point._1, point._2, lines)).sorted(Ordering.Int.reverse)
     println(sizes.splitAt(3)._1.product)
   }
-
-
 }
